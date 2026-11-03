@@ -1,0 +1,27 @@
+name: Build Mod
+
+on:
+  push:
+     branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    step:
+      name: Checkout do codigo
+      uses: actions/setup-dotnet
+
+      name: Configurar .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0x
+
+      name: Compilar DLL gerada
+      run: dotnet build --configuration Realese
+
+        name: Infinite_Chat-DLL
+        path: bin/Release/netstandard2.1/*.dll
+
+
